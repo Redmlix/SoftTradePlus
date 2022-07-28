@@ -1,0 +1,40 @@
+﻿<Window x:Class="SoftTradePlus.ProductsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SoftTradePlus"
+        mc:Ignorable="d"
+        MinHeight="450" MinWidth="800"
+        Title="Products" x:Name="window" Height="450" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="productsTable" ItemsSource="{Binding Products, Mode=OneWay}" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Price}" Header="Price" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Type}" Header="Type" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Date, StringFormat=yyyy-MM-dd}" Header="Date expiring" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel x:Name="stackPanelVertical" Orientation="Vertical" Grid.Column="1">
+            <Label Content="Name"/>
+            <TextBox x:Name="productNameTb" Height="20" Margin="2"/>
+            <Label Content="Price"/>
+            <TextBox x:Name="productPriceTb"  PreviewTextInput="productPriceValidation" Height="20" Margin="2"/>
+            <Label Content="Type"/>
+            <ComboBox x:Name="productTypeCb" SelectionChanged="productTypeCb_SelectionChanged" ItemsSource="{Binding ProductTypes, Mode=OneWay}" SelectedValuePath="Id" DisplayMemberPath="Name" Margin="2"/>
+            <Label Content="Date Expiring"/>
+            <DatePicker x:Name="productDateCalendar" Margin="2"/>
+            <Button x:Name="addBtn" Click="addBtn_Click" Content="Add" Height="50" Margin="2,10,2,10"/>
+            <Button x:Name="deleteBtn" Click="deleteBtn_Click" Content="Delete selected" Height="50" Margin="2,0,2,2"/>
+        </StackPanel>
+        <StackPanel x:Name="stackPanelBottom" Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="1">
+            <Button x:Name="backBtn" Click="backBtn_Click" Content="Back" Height="50" Margin="2"/>
+        </StackPanel>
+    </Grid>
+</Window>
