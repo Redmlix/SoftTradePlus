@@ -64,6 +64,7 @@ insert into STP.dbo.Client(name_client, status_client, manager_client)
 values('Клиент3', 1, 2)
 go
 create table STP.dbo.ClientProducts(
+id_clientProducts int identity(1,1) primary key,
 id_client int foreign key references STP.dbo.Client(id_client) on delete cascade,
 id_product int foreign key references STP.dbo.Product(id_product) on delete cascade)
 go

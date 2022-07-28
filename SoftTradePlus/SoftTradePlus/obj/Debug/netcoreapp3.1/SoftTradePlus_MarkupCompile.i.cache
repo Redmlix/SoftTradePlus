@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\App.xaml
-5-730829799
+6-1720377896
 
-28-1440705994
+33-1839030471
 193-798890877
-AdditionalViews\AdditionalViews.xaml;ClientsWindow\ClientsWindow.xaml;ManagersWindow\ManagersWindow.xaml;MenuWindow.xaml;ProductsWindow\ProductsWindow.xaml;
+AdditionalViews\AdditionalViews.xaml;BoughtProductsWindow.xaml;ClientsWindow\ClientsWindow.xaml;ManagersWindow\ManagersWindow.xaml;MenuWindow.xaml;ProductsWindow\ProductsWindow.xaml;
 
 False
 

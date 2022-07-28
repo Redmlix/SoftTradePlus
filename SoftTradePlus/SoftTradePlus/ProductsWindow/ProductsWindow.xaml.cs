@@ -57,7 +57,8 @@ namespace SoftTradePlus
 				SqlCommand command = new SqlCommand(query, sqlcon);
 				command.Parameters.AddWithValue("@name_product", productNameTb.Text);
 				command.Parameters.AddWithValue("@price_product", productPriceTb.Text);
-				command.Parameters.AddWithValue("@type_product", productTypeCb.SelectedIndex + 1);  // id in combobox starts with 0 but id in db starts with 1
+				ProductType selectedProductTypeItem = (ProductType)productTypeCb.SelectedItem;
+				command.Parameters.AddWithValue("@type_product", selectedProductTypeItem.Id);
 				command.Parameters.AddWithValue("@sub_expiring_product", productDateCalendar.SelectedDate.ToString());
 				command.ExecuteNonQuery();
 			}

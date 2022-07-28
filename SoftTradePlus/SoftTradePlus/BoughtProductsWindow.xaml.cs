@@ -14,15 +14,15 @@ using System.Windows.Shapes;
 namespace SoftTradePlus
 {
 	/// <summary>
-	/// Interaction logic for ClientWindow.xaml
+	/// Interaction logic for BoughtProductsWindow.xaml
 	/// </summary>
-	public partial class ClientsWindow : Window
+	public partial class BoughtProductsWindow : Window
 	{
-		public ClientsWindow()
+		public BoughtProductsWindow()
 		{
 			InitializeComponent();
 			window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-			DataContext = new ClientViewModel();
+			DataContext = new BoughtProductsViewModel();
 		}
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -44,14 +44,13 @@ namespace SoftTradePlus
 			sqlcon.Open();
 			try
 			{
-				string query = "insert into STP.dbo.Client(name_client, status_client, manager_client) " +
-					"values(@name_client, @status_client, @manager_client)";
+				string query = "insert into STP.dbo.ClientProducts(id_client, id_product) " +
+					"values(@id_client, @id_product)";
 				SqlCommand command = new SqlCommand(query, sqlcon);
-				command.Parameters.AddWithValue("@name_client", clientNameTb.Text);
-				ClientStatus selectedStatusItem = (ClientStatus) clientStatusCb.SelectedItem;
-				command.Parameters.AddWithValue("@status_client", selectedStatusItem.Id);
-				Manager selectedManagerItem = (Manager)clientManagerCb.SelectedItem;
-				command.Parameters.AddWithValue("@manager_client", selectedManagerItem.Id);
+				ClientBuy selectedClient = (ClientBuy)clientsCb.SelectedItem;
+				command.Parameters.AddWithValue("@id_client", selectedClient.Id);
+				ProductBought selectedProduct = (ProductBought)productsCb.SelectedItem;
+				command.Parameters.AddWithValue("@id_product", selectedProduct.Id);
 				command.ExecuteNonQuery();
 			}
 			catch (Exception ex)
@@ -62,8 +61,7 @@ namespace SoftTradePlus
 			{
 				sqlcon.Close();
 			}
-			DataContext = new ClientViewModel();
-			clientNameTb.Text = null;
+			DataContext = new BoughtProductsViewModel();
 		}
 
 		private void deleteBtn_Click(object sender, RoutedEventArgs e)
@@ -72,12 +70,12 @@ namespace SoftTradePlus
 			sqlcon.Open();
 			try
 			{
-				string query = "delete from Client where id_client = @id_client";
+				string query = "delete from ClientProducts where id_clientProducts = @id_clientProducts";
 				SqlCommand command = new SqlCommand(query, sqlcon);
-				Client selectedId = (Client)clientsTable.SelectedItem;
+				BoughtProducts selectedId = (BoughtProducts)clientsTable.SelectedItem;
 				if (selectedId != null)
 				{
-					command.Parameters.AddWithValue("@id_client", selectedId.Id);
+					command.Parameters.AddWithValue("@id_clientProducts", selectedId.Id);
 					command.ExecuteNonQuery();
 				}
 				else
@@ -94,7 +92,7 @@ namespace SoftTradePlus
 			{
 				sqlcon.Close();
 			}
-			DataContext = new ClientViewModel();
+			DataContext = new BoughtProductsViewModel();
 		}
 
 		private void backBtn_Click(object sender, RoutedEventArgs e)

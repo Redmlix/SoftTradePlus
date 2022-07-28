@@ -13,10 +13,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button x:Name="managersBtn" Content="Managers" Grid.Row="0" Height="50" VerticalAlignment="Center" Margin="5" Click="managersBtn_Click"/>
         <Button x:Name="clientsBtn" Content="Clients" Grid.Row="1" Height="50" VerticalAlignment="Center" Margin="5" Click="clientsBtn_Click"/>
-        <Button x:Name="productsBtn" Content="Products" Grid.Row="2" Height="50" VerticalAlignment="Center" Margin="5" Click="productsBtn_Click"/>
-        <Button x:Name="additViewsBtn" Content="Additional views" Grid.Row="3" Height="50" VerticalAlignment="Center" Margin="5" Click="additViewsBtn_Click"/>
+        <Button x:Name="boughtProductsBtn" Content="BoughtProducts" Grid.Row="2" Height="50" VerticalAlignment="Center" Margin="5" Click="boughtProductsBtn_Click"/>
+        <Button x:Name="productsBtn" Content="Products" Grid.Row="3" Height="50" VerticalAlignment="Center" Margin="5" Click="productsBtn_Click"/>
+        <Button x:Name="additViewsBtn" Content="Additional views" Grid.Row="4" Height="50" VerticalAlignment="Center" Margin="5" Click="additViewsBtn_Click"/>
     </Grid>
 </Window>

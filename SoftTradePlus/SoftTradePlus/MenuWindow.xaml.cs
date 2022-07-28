@@ -37,6 +37,13 @@ namespace SoftTradePlus
 			window.Show();
 		}
 
+		private void boughtProductsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			this.Hide();
+			BoughtProductsWindow window = new BoughtProductsWindow();
+			window.Show();
+		}
+
 		private void productsBtn_Click(object sender, RoutedEventArgs e)
 		{
 			this.Hide();
