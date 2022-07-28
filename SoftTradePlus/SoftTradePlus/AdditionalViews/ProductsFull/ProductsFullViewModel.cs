@@ -31,7 +31,7 @@ namespace SoftTradePlus
                         Name = reader.GetString("Name"),
 						Price = reader.GetDecimal("Price"),
                         Type = reader.GetString("Type"),
-                        Date = reader.GetDateTime("Expiring date").ToString("yyyy-MM-dd")
+                        Date = reader["Expiring date"] as string
                     };
                     ViewList.Add(newProductsFull);
                 }
