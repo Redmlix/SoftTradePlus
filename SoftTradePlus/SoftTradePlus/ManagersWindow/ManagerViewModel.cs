@@ -108,7 +108,7 @@ namespace SoftTradePlus
             }
             catch(Exception ex)
 			{
-                MessageBox.Show(ex.Message, "Data not saved");
+                MessageBox.Show("Use Correct/Existing data \n\n" + ex.Message, "Data not saved");
 			}
 			finally
             {
