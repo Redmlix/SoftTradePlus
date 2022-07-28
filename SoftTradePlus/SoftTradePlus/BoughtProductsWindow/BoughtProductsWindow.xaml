@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SoftTradePlus"
         mc:Ignorable="d"
         MinHeight="450" MinWidth="800"
-        Title="Clients" x:Name="window" Height="450" Width="800" Closing="Window_Closing">
+        Title="BoughtProducts" x:Name="window" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
