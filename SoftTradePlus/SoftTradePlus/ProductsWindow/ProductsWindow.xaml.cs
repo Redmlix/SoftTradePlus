@@ -61,7 +61,18 @@ namespace SoftTradePlus
 					command.Parameters.AddWithValue("@price_product", productPriceTb.Text);
 					ProductType selectedProductTypeItem = (ProductType)productTypeCb.SelectedItem;
 					command.Parameters.AddWithValue("@type_product", selectedProductTypeItem.Id);
-					command.Parameters.AddWithValue("@sub_expiring_product", productDateCalendar.SelectedDate.ToString());
+					if (productDateCalendar.SelectedDate != null)
+					{
+						// if selected date is not null we convert date format
+						// not converting to DateTime will make that ToString won't have setting for date format
+						DateTime selectedDate = (DateTime)productDateCalendar.SelectedDate;
+						command.Parameters.AddWithValue("@sub_expiring_product", selectedDate.ToString("yyyy-MM-dd"));
+					}
+					else
+					{
+						// if selected date is null - just save as it is
+						command.Parameters.AddWithValue("@sub_expiring_product", productDateCalendar.SelectedDate.ToString());
+					}
 					command.ExecuteNonQuery();
 				}
 				else
@@ -89,17 +100,21 @@ namespace SoftTradePlus
 			sqlcon.Open();
 			try
 			{
-				string query = "delete from Product where id_product = @id_product";
-				SqlCommand command = new SqlCommand(query, sqlcon);
-				Product selectedId = (Product)productsTable.SelectedItem;
-				if (selectedId != null)
+				SqlCommand command;
+				Product selectedId;
+				if (productsTable.SelectedIndex >= 0)
 				{
-					command.Parameters.AddWithValue("@id_product", selectedId.Id);
-					command.ExecuteNonQuery();
+					for (int i = productsTable.SelectedItems.Count - 1; i >= 0; i--)
+					{
+						string query = "delete from Product where id_product = @id_product";
+						command = new SqlCommand(query, sqlcon);
+						selectedId = (Product)productsTable.SelectedItems[i];
+						command.Parameters.AddWithValue("@id_product", selectedId.Id);
+						command.ExecuteNonQuery();
+					}
 				}
 				else
 				{
-					command.Cancel();
 					MessageBox.Show("Choose record before deleting");
 				}
 			}

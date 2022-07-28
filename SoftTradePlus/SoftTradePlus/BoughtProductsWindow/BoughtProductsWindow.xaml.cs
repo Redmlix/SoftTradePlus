@@ -78,17 +78,21 @@ namespace SoftTradePlus
 			sqlcon.Open();
 			try
 			{
-				string query = "delete from ClientProducts where id_clientProducts = @id_clientProducts";
-				SqlCommand command = new SqlCommand(query, sqlcon);
-				BoughtProducts selectedId = (BoughtProducts)clientsTable.SelectedItem;
-				if (selectedId != null)
+				SqlCommand command;
+				BoughtProducts selectedId;
+				if (boughtProductsTable.SelectedIndex >= 0)
 				{
-					command.Parameters.AddWithValue("@id_clientProducts", selectedId.Id);
-					command.ExecuteNonQuery();
+					for (int i = boughtProductsTable.SelectedItems.Count - 1; i >= 0; i--)
+					{
+						string query = "delete from ClientProducts where id_clientProducts = @id_clientProducts";
+						command = new SqlCommand(query, sqlcon);
+						selectedId = (BoughtProducts)boughtProductsTable.SelectedItems[i];
+						command.Parameters.AddWithValue("@id_clientProducts", selectedId.Id);
+						command.ExecuteNonQuery();
+					}
 				}
 				else
 				{
-					command.Cancel();
 					MessageBox.Show("Choose record before deleting");
 				}
 			}

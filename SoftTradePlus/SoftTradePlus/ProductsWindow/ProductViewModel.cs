@@ -70,7 +70,7 @@ namespace SoftTradePlus
                         Name = reader.GetString("name_product"),
                         Price = reader.GetDecimal("price_product"),
                         Type = reader.GetInt32("type_product"),
-                        Date = reader.GetDateTime("sub_expiring_product")
+                        Date = reader["sub_expiring_product"] as string
                     };
                     products.Add(newProduct);
                 }

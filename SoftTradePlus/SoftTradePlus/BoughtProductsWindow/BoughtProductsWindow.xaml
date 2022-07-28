@@ -12,7 +12,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="180"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="clientsTable" ItemsSource="{Binding BoughtProducts, Mode=OneWay}" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0">
+        <DataGrid x:Name="boughtProductsTable" ItemsSource="{Binding BoughtProducts, Mode=OneWay}" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Column="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="Id" Width="100" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Client}" Header="Client" Width="100"/>

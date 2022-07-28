@@ -76,17 +76,21 @@ namespace SoftTradePlus
 			sqlcon.Open();
 			try
 			{
-				string query = "delete from Manager where id_manager = @id_manager";
-				SqlCommand command = new SqlCommand(query, sqlcon);
-				Manager selectedId = (Manager)managersTable.SelectedItem;
-				if (selectedId != null)
+				SqlCommand command;
+				Manager selectedId;
+				if (managersTable.SelectedIndex >= 0)
 				{
-					command.Parameters.AddWithValue("@id_manager", selectedId.Id);
-					command.ExecuteNonQuery();
+					for (int i = managersTable.SelectedItems.Count - 1; i >= 0; i--)
+					{
+						string query = "delete from Manager where id_manager = @id_manager";
+						command = new SqlCommand(query, sqlcon);
+						selectedId = (Manager)managersTable.SelectedItems[i];
+						command.Parameters.AddWithValue("@id_manager", selectedId.Id);
+						command.ExecuteNonQuery();
+					}
 				}
 				else
 				{
-					command.Cancel();
 					MessageBox.Show("Choose record before deleting");
 				}
 			}

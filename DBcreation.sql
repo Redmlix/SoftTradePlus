@@ -30,13 +30,13 @@ id_product int identity(1,1) primary key,
 name_product varchar(100) not null,
 price_product money not null,
 type_product int foreign key references STP.dbo.ProductType(id_productType) on delete cascade,
-sub_expiring_product Date)
+sub_expiring_product varchar(20))
 go
 insert into STP.dbo.Product(name_product, price_product,type_product,sub_expiring_product)
 values('Товар1', 100.00, 1, '2023-12-01')
 go
 insert into STP.dbo.Product(name_product, price_product,type_product,sub_expiring_product)
-values('Товар2', 200.00, 2, '1900-01-01') 
+values('Товар2', 200.00, 2, null) 
 go
 create table STP.dbo.ClientStatus(
 id_clientStatus int identity(1,1) primary key,

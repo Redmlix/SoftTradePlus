@@ -70,8 +70,8 @@ namespace SoftTradePlus
             }
         }
 
-        private DateTime date;
-        public DateTime Date
+        private string date;
+        public string Date
         {
             get { return date; }
             set
