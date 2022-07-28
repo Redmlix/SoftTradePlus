@@ -125,7 +125,7 @@ namespace SoftTradePlus {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SoftTradePlus;V1.0.0.0;component/boughtproductswindow/boughtproductswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SoftTradePlus;component/boughtproductswindow/boughtproductswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\BoughtProductsWindow\BoughtProductsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -47,12 +47,20 @@ namespace SoftTradePlus
 				string query = "insert into STP.dbo.Client(name_client, status_client, manager_client) " +
 					"values(@name_client, @status_client, @manager_client)";
 				SqlCommand command = new SqlCommand(query, sqlcon);
-				command.Parameters.AddWithValue("@name_client", clientNameTb.Text);
-				ClientStatus selectedStatusItem = (ClientStatus) clientStatusCb.SelectedItem;
-				command.Parameters.AddWithValue("@status_client", selectedStatusItem.Id);
-				Manager selectedManagerItem = (Manager)clientManagerCb.SelectedItem;
-				command.Parameters.AddWithValue("@manager_client", selectedManagerItem.Id);
-				command.ExecuteNonQuery();
+				if (clientNameTb.Text != "" && clientStatusCb.SelectedItem != null && clientManagerCb.SelectedItem != null)
+				{
+					command.Parameters.AddWithValue("@name_client", clientNameTb.Text);
+					ClientStatus selectedStatusItem = (ClientStatus) clientStatusCb.SelectedItem;
+					command.Parameters.AddWithValue("@status_client", selectedStatusItem.Id);
+					Manager selectedManagerItem = (Manager)clientManagerCb.SelectedItem;
+					command.Parameters.AddWithValue("@manager_client", selectedManagerItem.Id);
+					command.ExecuteNonQuery();
+				}
+				else
+				{
+					command.Cancel();
+					MessageBox.Show("Write/Choose data to add");
+				}
 			}
 			catch (Exception ex)
 			{

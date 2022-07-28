@@ -47,11 +47,19 @@ namespace SoftTradePlus
 				string query = "insert into STP.dbo.ClientProducts(id_client, id_product) " +
 					"values(@id_client, @id_product)";
 				SqlCommand command = new SqlCommand(query, sqlcon);
-				ClientBuy selectedClient = (ClientBuy)clientsCb.SelectedItem;
-				command.Parameters.AddWithValue("@id_client", selectedClient.Id);
-				ProductBought selectedProduct = (ProductBought)productsCb.SelectedItem;
-				command.Parameters.AddWithValue("@id_product", selectedProduct.Id);
-				command.ExecuteNonQuery();
+				if (clientsCb.SelectedItem != null && productsCb.SelectedItem != null)
+				{
+					ClientBuy selectedClient = (ClientBuy)clientsCb.SelectedItem;
+					command.Parameters.AddWithValue("@id_client", selectedClient.Id);
+					ProductBought selectedProduct = (ProductBought)productsCb.SelectedItem;
+					command.Parameters.AddWithValue("@id_product", selectedProduct.Id);
+					command.ExecuteNonQuery();
+				}
+				else
+				{
+					command.Cancel();
+					MessageBox.Show("Write/Choose data to add");
+				}
 			}
 			catch (Exception ex)
 			{

@@ -47,8 +47,16 @@ namespace SoftTradePlus
 			{
 				string query = "insert into STP.dbo.Manager(name_manager) values(@name_manager)";
 				SqlCommand command = new SqlCommand(query, sqlcon);
-				command.Parameters.AddWithValue("@name_manager", managerNameTb.Text);
-				command.ExecuteNonQuery();
+				if (managerNameTb.Text != "")
+				{
+					command.Parameters.AddWithValue("@name_manager", managerNameTb.Text);
+					command.ExecuteNonQuery();
+				}
+				else
+				{
+					command.Cancel();
+					MessageBox.Show("Write/Choose data to add");
+				}
 			}
 			catch (Exception ex)
 			{
@@ -59,6 +67,7 @@ namespace SoftTradePlus
 				sqlcon.Close();
 			}
 			DataContext = new ManagerViewModel();
+			managerNameTb.Text = "";
 		}
 
 		private void deleteBtn_Click(object sender, RoutedEventArgs e)
@@ -70,8 +79,16 @@ namespace SoftTradePlus
 				string query = "delete from Manager where id_manager = @id_manager";
 				SqlCommand command = new SqlCommand(query, sqlcon);
 				Manager selectedId = (Manager)managersTable.SelectedItem;
-				command.Parameters.AddWithValue("@id_manager", selectedId.Id);
-				command.ExecuteNonQuery();
+				if (selectedId != null)
+				{
+					command.Parameters.AddWithValue("@id_manager", selectedId.Id);
+					command.ExecuteNonQuery();
+				}
+				else
+				{
+					command.Cancel();
+					MessageBox.Show("Choose record before deleting");
+				}
 			}
 			catch (Exception ex)
 			{

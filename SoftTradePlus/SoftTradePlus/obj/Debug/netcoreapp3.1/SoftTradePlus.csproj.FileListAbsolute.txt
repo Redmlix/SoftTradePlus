@@ -34,5 +34,5 @@ D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\Ad
 D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\ClientsWindow\ClientsWindow.baml
 D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\ManagersWindow\ManagersWindow.baml
 D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\ProductsWindow\ProductsWindow.baml
-D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\BoughtProductsWindow.g.cs
-D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\BoughtProductsWindow.baml
+D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\BoughtProductsWindow\BoughtProductsWindow.g.cs
+D:\PRAKTEKA\SoftTradePlus\SoftTradePlus\SoftTradePlus\obj\Debug\netcoreapp3.1\BoughtProductsWindow\BoughtProductsWindow.baml

@@ -36,7 +36,7 @@ insert into STP.dbo.Product(name_product, price_product,type_product,sub_expirin
 values('Товар1', 100.00, 1, '2023-12-01')
 go
 insert into STP.dbo.Product(name_product, price_product,type_product,sub_expiring_product)
-values('Товар2', 200.00, 2, '2024-01-12')
+values('Товар2', 200.00, 2, '1900-01-01')
 go
 create table STP.dbo.ClientStatus(
 id_clientStatus int identity(1,1) primary key,
